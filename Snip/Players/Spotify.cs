@@ -211,6 +211,7 @@ namespace Winter
                     this.authorizationToken = jsonSummary.access_token.ToString();
                     this.authorizationTokenExpiration = Convert.ToDouble((long)jsonSummary.expires_in);
                     this.refreshToken = jsonSummary.refresh_token.ToString();
+                    System.IO.File.WriteAllLines(@"token.txt", {jsonSummary.access_token.ToString()});
 
                     this.updateAuthorizationToken.Interval = this.authorizationTokenExpiration * 1000.0;
                 }
